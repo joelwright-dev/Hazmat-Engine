@@ -1,36 +1,75 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Hazmat">
+      <UniqueIdentifier>{CA7DF2B6-B61F-1D8D-9FDA-30E18B1BA4DD}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Hazmat\Events">
+      <UniqueIdentifier>{6E820B8F-DA42-87C5-A37D-D0420FFDCBA1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Hazmat\Core.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Hazmat\Application.h">
-      <Filter>Header Files</Filter>
+      <Filter>Hazmat</Filter>
     </ClInclude>
-    <ClInclude Include="src\HazmatEngine.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Hazmat\Core.h">
+      <Filter>Hazmat</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazmat\EntryPoint.h">
-      <Filter>Header Files</Filter>
+      <Filter>Hazmat</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazmat\Events\ApplicationEvent.h">
+      <Filter>Hazmat\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazmat\Events\Event.h">
+      <Filter>Hazmat\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazmat\Events\KeyEvent.h">
+      <Filter>Hazmat\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazmat\Events\MouseEvent.h">
+      <Filter>Hazmat\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazmat\Layer.h">
+      <Filter>Hazmat</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazmat\LayerStack.h">
+      <Filter>Hazmat</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazmat\Log.h">
+      <Filter>Hazmat</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazmat\Window.h">
+      <Filter>Hazmat</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HazmatEngine.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hmpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazmat\Application.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Hazmat</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazmat\Layer.cpp">
+      <Filter>Hazmat</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazmat\LayerStack.cpp">
+      <Filter>Hazmat</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazmat\Log.cpp">
+      <Filter>Hazmat</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hmpch.cpp" />
   </ItemGroup>
 </Project>
