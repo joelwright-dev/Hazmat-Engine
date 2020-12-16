@@ -10,12 +10,19 @@ public:
 
 	void OnUpdate() override
 	{
-		HM_INFO("ExampleLayer::Update");
+		if (HazmatEngine::Input::IsKeyPressed(HM_KEY_TAB))
+			HM_TRACE("Tab key is pressed (poll)");
 	}
 
 	void OnEvent(HazmatEngine::Event& event) override
 	{
-		HM_TRACE("{0}", event);
+		if (event.GetEventType() == HazmatEngine::EventType::KeyPressed)
+		{
+			HazmatEngine::KeyPressedEvent& e = (HazmatEngine::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == HM_KEY_TAB)
+				HM_TRACE("Tab key is pressed (event)");
+			HM_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 
@@ -25,6 +32,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new HazmatEngine::ImGuiLayer());
 	}
 
 	~Sandbox()

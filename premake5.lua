@@ -12,13 +12,18 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "HazmatEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "HazmatEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "HazmatEngine/vendor/imgui"
 
 include "HazmatEngine/vendor/GLFW"
+include "HazmatEngine/vendor/Glad"
+include "HazmatEngine/vendor/imgui"
 
 project "HazmatEngine"
 	location "HazmatEngine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -36,24 +41,28 @@ project "HazmatEngine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
 		{
 			"HM_PLATFORM_WINDOWS",
-			"HM_BUILD_DLL"
+			"HM_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -63,22 +72,23 @@ project "HazmatEngine"
 
 	filter "configurations:Debug"
 		defines "HM_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "HM_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HM_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
+	staticruntime "off"
 
 	language "C++"
 
@@ -104,7 +114,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -114,15 +123,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "HM_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "HM_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HM_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
