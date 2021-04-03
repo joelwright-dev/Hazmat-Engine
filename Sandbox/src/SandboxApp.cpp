@@ -1,5 +1,7 @@
 #include <HazmatEngine.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public HazmatEngine::Layer 
 {
 public:
@@ -12,6 +14,13 @@ public:
 	{
 		if (HazmatEngine::Input::IsKeyPressed(HM_KEY_TAB))
 			HM_TRACE("Tab key is pressed (poll)");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello from sandbox");
+		ImGui::End();
 	}
 
 	void OnEvent(HazmatEngine::Event& event) override
@@ -32,7 +41,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new HazmatEngine::ImGuiLayer());
 	}
 
 	~Sandbox()

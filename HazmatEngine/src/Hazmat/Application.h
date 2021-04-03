@@ -7,6 +7,11 @@
 #include "Hazmat/Events/Event.h"
 #include "Hazmat/Events/ApplicationEvent.h"
 
+#include "Hazmat/ImGui/ImGuiLayer.h"
+
+#include "Hazmat/Renderer/Shader.h"
+#include "Hazmat/Renderer/Buffer.h"
+
 namespace HazmatEngine {
 	class HAZMAT_ENGINE_API Application
 	{
@@ -27,8 +32,14 @@ namespace HazmatEngine {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray;
+		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	private:
 		static Application* s_Instance;
 	};

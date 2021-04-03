@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef HM_PLATFORM_WINDOWS
+#if HM_DYNAMIC_LINK
 	#ifdef HM_BUILD_DLL
 		#define HAZMAT_ENGINE_API __declspec(dllexport)
 	#else
 		#define HAZMAT_ENGINE_API __declspec(dllimport)
 	#endif
+#else
+	#define HAZMAT_ENGINE_API
+#endif
 #else
 	#error Hazmat Engine only supports Windows!
 #endif
